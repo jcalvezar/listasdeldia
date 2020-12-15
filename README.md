@@ -44,7 +44,8 @@ Ionic v3
 
 * [Notepad++](http://www.dropwizard.io/1.0.2/docs/) - El Editor de Textos
 * [Ionic](https://maven.apache.org/) - El FrameWork
-* [NodeJS](https://maven.apache.org/) - El Manejador de dependencias
+* [NodeJS](https://maven.apache.org/) - El Interprete Javascript
+* [NPM](https://maven.apache.org/) - El Manejador de dependencias
 
 ## Autores ✒️
 
