@@ -59,30 +59,10 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
-	registrar() {
-		console.log('registrar');
-		this.storage.set('this.almacen', this.user);
-		this.loginStatus = 2;
-	}
 	
-	registrar2() {
-		console.log('registrar 2');
+	ingresar() {
+		console.log('ingresando');
 		
 		this.navCtrl.setRoot( TabsPage );
-	}
-	
-	adherir() {
-		console.log('adherir');
-		this.navCtrl.push( AdherirPage );
-	}
-	
-	goToCorregir() {
-		console.log('corregir');
-		this.loginStatus = 1;
-	}
-	
-	goToPedir() {
-		console.log('volver a pedir');
 	}
 }

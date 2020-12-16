@@ -18,80 +18,33 @@
       <ion-col>
         <ion-list inset class="no-border">
           <ion-item>
-            <ion-label>Nombre</ion-label>
+            <ion-label>Email</ion-label>
             <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Celular</ion-label>
-            <ion-input type="number" [(ngModel)]="user.telefono"></ion-input>
+            <ion-label>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.telefono"></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <button ion-button block class="login-button" (click)="registrar()">Registrarme</button>
+        <button ion-button block class="login-button" (click)="ingresar()">Ingresar</button>
       </ion-col>
     </ion-row>
     <ion-row >
-      <ion-col text-center>
-
-					<button ion-button small clear icon-start (click)="adherir()" >
+      <ion-col>
+					<button ion-button small clear icon-start (click)="registro()" >
 					  <ion-icon name='key'></ion-icon>
-					  Quiero adherir mi Negocio
+					  Registrarme
 					</button>
-
       </ion-col>
-    </ion-row>
-  </div>
-	
-  <div *ngIf="loginStatus==2">
-    <ion-row>
-      <ion-col>
-        <ion-list inset class="no-border">
-          <ion-item>
-            <ion-label>Nombre</ion-label>
-            <ion-input type="text" [(ngModel)]="user.nombre" disabled></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Celular</ion-label>
-            <ion-input type="number" [(ngModel)]="user.telefono" disabled></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Código</ion-label>
-            <ion-input type="number" [(ngModel)]="user.codigo"></ion-input>
-          </ion-item>
-					<ion-item>
-						<ion-label>Ciudad</ion-label>
-						<ion-select [(ngModel)]="user.ciudad">
-							<ion-option *ngFor="let city of cities" [value]="city.id">{{ city.nombre }}</ion-option>
-						</ion-select>
-					</ion-item>
-          <ion-item>
-            <ion-label>Dirección</ion-label>
-            <ion-input type="text" [(ngModel)]="user.direccion" ></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button block class="login-button" (click)="registrar2()">Ingresar</button>
-      </ion-col>
-    </ion-row>
-    <ion-row >
-      <ion-col text-center>
-
-					<button ion-button small clear icon-start (click)="goToCorregir()" >
-					  <ion-icon name='contact'></ion-icon>
-					  &nbsp;Corregir Datos
+      <ion-col text-right>
+					<button ion-button small clear icon-start (click)="recupero()" >
+					  <ion-icon name='key'></ion-icon>
+					  Recuperar Clave
 					</button>
-
-					<button ion-button small clear icon-end (click)="goToPedir()">
-					  <ion-icon name='key' ></ion-icon>
-					  &nbsp;Pedir Código
-					</button>
-
       </ion-col>
     </ion-row>
   </div>
