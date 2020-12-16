@@ -29,6 +29,12 @@ Y ya podemos ver la App en un Navegador con:
 ionic serve
 ```
 
+Si ya tiene la carpeta y quiere descargar los últimos cambios:
+
+```
+git pull origin main
+```
+
 ### Pre-requisitos 📋
 
 Se necesita Node
@@ -39,13 +45,15 @@ sudo apt-get install node
 
 ## Construido con 🛠️
 
-Notepad++
-Ionic v3
+Notepad++  
+Ionic v3  
+NodeJS  
+NPM  
 
-* [Notepad++](http://www.dropwizard.io/1.0.2/docs/) - El Editor de Textos
-* [Ionic](https://maven.apache.org/) - El FrameWork
-* [NodeJS](https://maven.apache.org/) - El Interprete Javascript
-* [NPM](https://maven.apache.org/) - El Manejador de dependencias
+* [Notepad++](https://notepad-plus-plus.org/) - El Editor de Textos
+* [Ionic](https://ionicframework.com/) - El FrameWork
+* [NodeJS](https://nodejs.org/) - El Interprete Javascript
+* [NPM](https://www.npmjs.com/) - El Manejador de dependencias
 
 ## Autores ✒️
 
