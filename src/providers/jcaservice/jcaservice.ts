@@ -111,7 +111,7 @@ export class JcaserviceProvider {
 			let jheaders = new HttpHeaders();
 		
 			if (this.loginState) {
-				jheaders = jheaders.set('Authentication', this.jdata.token);
+				jheaders = jheaders.set('Authentication', this.usuario.token);
 				console.log('Agregué TOKEN al HEADER HTTP');
 			}
 		
@@ -133,7 +133,7 @@ export class JcaserviceProvider {
     let jheaders = new HttpHeaders();
 		
 		if (this.loginState) {
-			jheaders = jheaders.set('Authentication', this.jdata.token);
+			jheaders = jheaders.set('Authentication', this.usuario.token);
 			console.log('Agregué TOKEN al HEADER HTTP');
 		}
 		
