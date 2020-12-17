@@ -6,13 +6,14 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { MisexpedientesPage } from '../pages/misexpedientes/misexpedientes';
+import { MisnotificacionesPage } from '../pages/misnotificaciones/misnotificaciones';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { LoginPage } from '../pages/login/login';
 import { AdherirPage } from '../pages/adherir/adherir';
+import { RecuperoPage } from '../pages/recupero/recupero';
 import { MisdatosPage } from '../pages/misdatos/misdatos';
 import { MilicenciaPage } from '../pages/milicencia/milicencia';
 
@@ -23,14 +24,15 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
 		MisdatosPage,
 		MilicenciaPage,
 		LoginPage,
-		AdherirPage
+		AdherirPage,
+		RecuperoPage,
+		MisexpedientesPage,
+		MisnotificacionesPage
   ],
   imports: [
     BrowserModule,
@@ -41,14 +43,15 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
 		MisdatosPage,
 		MilicenciaPage,
 		LoginPage,
-		AdherirPage
+		AdherirPage,
+		RecuperoPage,
+		MisexpedientesPage,
+		MisnotificacionesPage
   ],
   providers: [
     StatusBar,

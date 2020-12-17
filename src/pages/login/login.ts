@@ -9,6 +9,7 @@ import { So_usuario } from '../../models/modelos';
 
 import { TabsPage } from '../tabs/tabs';
 import { AdherirPage } from '../adherir/adherir';
+import { RecuperoPage } from '../recupero/recupero';
 
 
 /**
@@ -38,20 +39,20 @@ export class LoginPage {
 		this.storage.get(this.almacen).then((val) => {
 			console.log('Leyendo Storage');
 			if (val != null) {
-				console.log('Tengo Datos, cel:', val.celular);
+				console.log('Tengo Datos:', val.celular);
 				this.user = val;
 				
 				if (this.user.token!='') {
 					console.log('Tengo Token. Entro.');
 					//this.loginStatus = 1;
 				} else {
-					console.log('NO Tengo Token. Pido Codigo y Ciudad.');
-					this.loginStatus = 2;
+					console.log('NO Tengo Token. Pido.');
+					//this.loginStatus = 2;
 				}
 
 			} else {
 				console.log('NO Logueado.');
-				this.loginStatus = 1;
+				//this.loginStatus = 1;
 			}
 		});
 	}
@@ -64,5 +65,17 @@ export class LoginPage {
 		console.log('ingresando');
 		
 		this.navCtrl.setRoot( TabsPage );
+	}
+	
+	registro() {
+		console.log('registro');
+		
+		this.navCtrl.push( AdherirPage );
+	}
+	
+	recupero() {
+		console.log('recupero');
+		
+		this.navCtrl.push( RecuperoPage );
 	}
 }
