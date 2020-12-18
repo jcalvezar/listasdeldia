@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
+import { NotificacionPage } from '../notificacion/notificacion';
 
 /**
  * Generated class for the MisnotificacionesPage page.
@@ -25,4 +26,11 @@ export class MisnotificacionesPage {
     console.log('ionViewDidLoad MisnotificacionesPage');
   }
 
+	mostrarNotificacion(notificacion) {
+	  console.log("notif "+notificacion.nro);
+
+	  this.navCtrl.push(NotificacionPage, {
+        noti: notificacion
+      });
+	}
 }

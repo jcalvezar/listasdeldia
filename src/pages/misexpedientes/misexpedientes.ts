@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
+import { ExpedientePage } from '../expediente/expediente';
 
 /**
  * Generated class for the MisexpedientesPage page.
@@ -24,5 +25,13 @@ export class MisexpedientesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisexpedientesPage');
   }
+	
+	mostrarExpediente(expediente) {
+	  console.log("expte "+expediente.nro);
+
+	  this.navCtrl.push(ExpedientePage, {
+        expte: expediente
+      });
+	}
 
 }
