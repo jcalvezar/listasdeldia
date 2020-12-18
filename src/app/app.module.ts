@@ -16,6 +16,7 @@ import { AdherirPage } from '../pages/adherir/adherir';
 import { RecuperoPage } from '../pages/recupero/recupero';
 import { MisdatosPage } from '../pages/misdatos/misdatos';
 import { MilicenciaPage } from '../pages/milicencia/milicencia';
+import { SalirPage } from '../pages/salir/salir';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +33,8 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 		AdherirPage,
 		RecuperoPage,
 		MisexpedientesPage,
-		MisnotificacionesPage
+		MisnotificacionesPage,
+		SalirPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 		AdherirPage,
 		RecuperoPage,
 		MisexpedientesPage,
-		MisnotificacionesPage
+		MisnotificacionesPage,
+		SalirPage
   ],
   providers: [
     StatusBar,

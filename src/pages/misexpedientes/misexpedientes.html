@@ -18,17 +18,17 @@
 
 	<div padding>
 		<ion-segment [(ngModel)]="tipo">
-			<ion-segment-button value="1">
+			<ion-segment-button value="chaco">
 				Chaco
 			</ion-segment-button>
-			<ion-segment-button value="2">
+			<ion-segment-button value="formosa">
 				Formosa
 			</ion-segment-button>
 		</ion-segment>
 	</div>
 	
 	<ion-list>
-		<ion-item *ngFor="let expediente of jcaService.expedientes">
+		<ion-item *ngFor="let expediente of jcaService.expedientes[tipo]">
 			<h2>{{ expediente.nro }}</h2>
 			<p>{{ expediente.caratula }}</p>
 			<button ion-button clear item-end>Ver</button>

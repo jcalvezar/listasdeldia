@@ -16,7 +16,7 @@ import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
 })
 export class MisexpedientesPage {
 
-	tipo: string = '1';
+	tipo: string = 'chaco';
 	
   constructor(public jcaService: JcaserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }

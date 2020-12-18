@@ -16,6 +16,8 @@ import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
 })
 export class MisnotificacionesPage {
 
+	tipo: string = 'chaco';
+	
   constructor(public jcaService: JcaserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 

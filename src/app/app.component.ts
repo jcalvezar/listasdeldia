@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 import { MisdatosPage } from '../pages/misdatos/misdatos';
 import { MilicenciaPage } from '../pages/milicencia/milicencia';
+import { SalirPage } from '../pages/salir/salir';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,7 +34,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Mis Datos', component: MisdatosPage, icon: 'person' },
-			{ title: 'Mi Licencia', component: MilicenciaPage, icon: 'happy' }
+			{ title: 'Mi Licencia', component: MilicenciaPage, icon: 'happy' },
+			{ title: 'Salir', component: SalirPage, icon: 'log-out' }
     ];
   }
 	

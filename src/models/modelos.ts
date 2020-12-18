@@ -15,9 +15,17 @@ export interface So_expediente {
 	caratula: string
 };
 
+export interface So_expedientes {
+	[index: string]: So_expediente[];
+};
+
 export interface So_notificacion {
 	id: string,
 	nro: string,
 	caratula: string,
 	proveido: string
+};
+
+export interface So_notificaciones {
+	[index: string]: So_notificacion[];
 };

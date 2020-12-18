@@ -16,8 +16,8 @@ export class JcaserviceProvider {
   public loginState:boolean = false;
 	
 	usuario: So_usuario;
-	expedientes: So_expediente[];
-	notificaciones: So_notificacion[];
+	expedientes: So_expedientes;
+	notificaciones: So_notificaciones;
 	
   constructor(public http: HttpClient) {
     console.log('Hello JcaserviceProvider Provider');
@@ -32,7 +32,8 @@ export class JcaserviceProvider {
 			token: ''
 		};
 		
-		this.expedientes = [
+		this.expedientes = {
+			chaco: [
 			{
 				id: '1',
 				nro: '1/19',
@@ -47,10 +48,27 @@ export class JcaserviceProvider {
 				id: '3',
 				nro: '111/19',
 				caratula: 'El Estado contra Loro Manson'
-			}
-		];
+			}],
+			formosa: [
+			{
+				id: '4',
+				nro: '1/19',
+				caratula: 'El Estado contra Gildo'
+			},
+			{
+				id: '5',
+				nro: '11/19',
+				caratula: 'El Estado contra Insfran'
+			},
+			{
+				id: '6',
+				nro: '111/19',
+				caratula: 'El Estado contra Insfran Xion'
+			}]
+		};
 		
-		this.notificaciones = [
+		this.notificaciones = {
+			chaco: [
 			{
 				id: '1',
 				nro: '1/19',
@@ -68,8 +86,27 @@ export class JcaserviceProvider {
 				nro: '111/19',
 				caratula: 'El Estado contra Loro Manson',
 				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			}
-		];
+			}],
+			formosa: [
+			{
+				id: '4',
+				nro: '1/19',
+				caratula: 'El Estado contra Formoguayo',
+				proveido: 'Fallo c/Sentencia: Prision Perpetua'
+			},
+			{
+				id: '5',
+				nro: '11/19',
+				caratula: 'El Estado contra Paraguayo',
+				proveido: 'Fallo c/Sentencia: Prision Perpetua'
+			},
+			{
+				id: '6',
+				nro: '111/19',
+				caratula: 'El Estado contra Clorindo',
+				proveido: 'Fallo c/Sentencia: Prision Perpetua'
+			}]
+		};
 		
 		// this.leerExpedientes();
 		// this.leerNotificaciones();
