@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
 import { ExpedientePage } from '../expediente/expediente';
+import { AgregarexpedientePage } from '../agregarexpediente/agregarexpediente';
 
 /**
  * Generated class for the MisexpedientesPage page.
@@ -33,5 +34,14 @@ export class MisexpedientesPage {
         expte: expediente
       });
 	}
+	
+	agregarExpediente() {
+	  console.log("expte nuevo");
 
+	  this.navCtrl.push(AgregarexpedientePage);
+	}
+
+	eliminarExpediente(expediente) {
+		console.log("Eliminando...");
+	}
 }

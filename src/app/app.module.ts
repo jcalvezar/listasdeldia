@@ -9,6 +9,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ContactPage } from '../pages/contact/contact';
 import { MisexpedientesPage } from '../pages/misexpedientes/misexpedientes';
 import { ExpedientePage } from '../pages/expediente/expediente';
+import { AgregarexpedientePage } from '../pages/agregarexpediente/agregarexpediente';
 import { MisnotificacionesPage } from '../pages/misnotificaciones/misnotificaciones';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -37,6 +38,7 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 		MisexpedientesPage,
 		MisnotificacionesPage,
 		ExpedientePage,
+		AgregarexpedientePage,
 		NotificacionPage,
 		SalirPage
   ],
@@ -59,6 +61,7 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
 		MisexpedientesPage,
 		MisnotificacionesPage,
 		ExpedientePage,
+		AgregarexpedientePage,
 		NotificacionPage,
 		SalirPage
   ],
