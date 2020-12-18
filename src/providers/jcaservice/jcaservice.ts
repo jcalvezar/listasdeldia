@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { So_usuario, So_expediente, So_notificacion } from '../../models/modelos';
+import { So_usuario, So_expedientes, So_notificaciones } from '../../models/modelos';
 
 /*
   Generated class for the JcaserviceProvider provider.
