@@ -12,7 +12,7 @@ import { So_usuario, So_expedientes, So_notificaciones } from '../../models/mode
 @Injectable()
 export class JcaserviceProvider {
 
-	apiUrl = 'https://www.calu.com/api001';
+	apiUrl = 'https://www.jcalvez.info/apps/listasdeldia';
   public loginState:boolean = false;
 	
 	usuario: So_usuario;
@@ -108,8 +108,8 @@ export class JcaserviceProvider {
 			}]
 		};
 		
-		// this.leerExpedientes();
-		// this.leerNotificaciones();
+		this.leerExpedientes();
+		this.leerNotificaciones();
   }
 	
 	// -------------------------------------------------------
@@ -119,7 +119,8 @@ export class JcaserviceProvider {
 		console.log('leyendo expedientes');
 		
 		this.enviarGet('/expedientes/').then(data => {
-			this.expedientes = data['expedientes'];
+			console.log('Lei expedientes...');
+			this.expedientes = data;
 		}, (err) => {
 			console.log(err);
 		});
@@ -132,7 +133,8 @@ export class JcaserviceProvider {
 		console.log('leyendo notificaciones');
 		
 		this.enviarGet('/notificaciones/').then(data => {
-			this.notificaciones = data['notificaciones'];
+			console.log('Lei notifis...');
+			this.notificaciones = data;
 		}, (err) => {
 			console.log(err);
 		});
