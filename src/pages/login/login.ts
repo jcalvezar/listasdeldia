@@ -28,10 +28,10 @@ export class LoginPage {
 	almacen: string = 'softcorp-peritajes';
 	cities: any = [ { id: 1, nombre: 'Corrientes' }, { id: 2, nombre: 'Paso de la Patria' } ];
 	loginStatus: number = 0;
-	user: So_usuario = JSON.parse('{"nombre":"","telefono":"","ciudad":0,"direccion":"","id":"","token":""}');
+	user: So_usuario = JSON.parse('{"nombre":"","apellido":"","email":"","password":"","id":"","token":""}');
 	
   constructor(public jcaService: JcaserviceProvider, public loadingCtrl: LoadingController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
-		this.checkLogged();
+		//this.checkLogged();
   }
 
 	checkLogged() {
@@ -64,7 +64,12 @@ export class LoginPage {
 	ingresar() {
 		console.log('ingresando');
 		
-		this.navCtrl.setRoot( TabsPage );
+		this.jcaService.login(this.user.email, this.user.password).then( () => {
+			this.navCtrl.setRoot( TabsPage );
+		}, () => {
+			console.log("error de logueo")
+		});
+		
 	}
 	
 	registro() {

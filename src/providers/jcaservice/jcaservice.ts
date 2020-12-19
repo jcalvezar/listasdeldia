@@ -12,7 +12,7 @@ import { So_usuario, So_expedientes, So_notificaciones } from '../../models/mode
 @Injectable()
 export class JcaserviceProvider {
 
-	apiUrl = 'https://www.jcalvez.info/apps/listasdeldia';
+	apiUrl = 'https://www.jcalvez.info/apps/listasdeldia/v001';
   public loginState:boolean = false;
 	
 	usuario: So_usuario;
@@ -24,93 +24,56 @@ export class JcaserviceProvider {
 		
 		this.usuario = {
 			nombre: '',
+			apellido: '',
 			email: '',
-			ciudad: 0,
-			direccion: '',
 			id: '',
-			codigo: '',
 			token: ''
 		};
 		
+
 		this.expedientes = {
-			chaco: [
-			{
-				id: '1',
-				nro: '1/19',
-				caratula: 'El Estado contra Kristina Manson'
-			},
-			{
-				id: '2',
-				nro: '11/19',
-				caratula: 'El Estado contra Maximo Manson'
-			},
-			{
-				id: '3',
-				nro: '111/19',
-				caratula: 'El Estado contra Loro Manson'
-			}],
-			formosa: [
-			{
-				id: '4',
-				nro: '1/19',
-				caratula: 'El Estado contra Gildo'
-			},
-			{
-				id: '5',
-				nro: '11/19',
-				caratula: 'El Estado contra Insfran'
-			},
-			{
-				id: '6',
-				nro: '111/19',
-				caratula: 'El Estado contra Insfran Xion'
-			}]
+			chaco: [],
+			formosa: []
 		};
 		
 		this.notificaciones = {
-			chaco: [
-			{
-				id: '1',
-				nro: '1/19',
-				caratula: 'El Estado contra Kristina Manson',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			},
-			{
-				id: '2',
-				nro: '11/19',
-				caratula: 'El Estado contra Maximo Manson',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			},
-			{
-				id: '3',
-				nro: '111/19',
-				caratula: 'El Estado contra Loro Manson',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			}],
-			formosa: [
-			{
-				id: '4',
-				nro: '1/19',
-				caratula: 'El Estado contra Formoguayo',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			},
-			{
-				id: '5',
-				nro: '11/19',
-				caratula: 'El Estado contra Paraguayo',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			},
-			{
-				id: '6',
-				nro: '111/19',
-				caratula: 'El Estado contra Clorindo',
-				proveido: 'Fallo c/Sentencia: Prision Perpetua'
-			}]
+			chaco: [],
+			formosa: []
 		};
 		
+		/*
 		this.leerExpedientes();
 		this.leerNotificaciones();
+		*/
   }
+	
+	// -------------------------------------------------------
+	// Login
+	// -------------------------------------------------------
+	login(email, password) {
+	  return new Promise(resolve => {
+			
+			console.log('LOGIN');
+			
+			let postData = new FormData();
+			postData.append('email' , email);
+			postData.append('password' , password);
+			
+			this.enviarPost('/User/login/',postData).then((result) => {
+				 console.log('JCA: ' + JSON.stringify(result));
+				 this.usuario = result['user'];
+				 this.loginState = true;
+				 
+				 this.leerExpedientes();
+				 this.leerNotificaciones();
+				 
+				 resolve(true);
+			}, (err) => {
+				
+				 console.log(err);
+			});
+	  });
+	}
 	
 	// -------------------------------------------------------
 	// Leer Expedientes
@@ -120,7 +83,7 @@ export class JcaserviceProvider {
 		
 		this.enviarGet('/expedientes/').then(data => {
 			console.log('Lei expedientes...');
-			this.expedientes = data;
+			this.expedientes = data['expedientes'];
 		}, (err) => {
 			console.log(err);
 		});
@@ -134,7 +97,7 @@ export class JcaserviceProvider {
 		
 		this.enviarGet('/notificaciones/').then(data => {
 			console.log('Lei notifis...');
-			this.notificaciones = data;
+			this.notificaciones = data['notificaciones'];
 		}, (err) => {
 			console.log(err);
 		});
