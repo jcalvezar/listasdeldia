@@ -25,6 +25,8 @@ export class MisexpedientesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisexpedientesPage');
+		
+		this.jcaService.leerExpedientes();
   }
 	
 	mostrarExpediente(expediente) {

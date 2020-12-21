@@ -2,6 +2,7 @@
 export interface So_usuario {
 	nombre: string,
 	email: string,
+	password: string,
 	ciudad: number,
 	direccion: string,
 	id: string,
@@ -12,7 +13,8 @@ export interface So_usuario {
 export interface So_expediente {
 	id: string,
 	nro: string,
-	caratula: string
+	caratula: string,
+	juzgado: string
 };
 
 export interface So_expedientes {

@@ -9,8 +9,8 @@ import { MisexpedientesPage } from '../misexpedientes/misexpedientes';
 })
 export class TabsPage {
 
-  tab1Root = MisexpedientesPage;
-  tab2Root = MisnotificacionesPage;
+  tab1Root = MisnotificacionesPage;
+  tab2Root = MisexpedientesPage;
   tab3Root = ContactPage;
 
   constructor() {

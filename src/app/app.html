@@ -3,8 +3,8 @@
       <div class="menu-header">
         <!--material-design-background-->
         <img class="user-avatar round" src="../assets/imgs/generic-avatar.png"/>
-        <p class="name">{{ jcaService.usuario.nombre }}</p>
-        <p class="e-mail">{{ jcaService.usuario.telefono }}</p>
+        <p class="name">{{ jcaService.usuario.apellido }}, {{ jcaService.usuario.nombre }}</p>
+        <p class="e-mail">{{ jcaService.usuario.email }}</p>
       </div>
       <ion-list no-lines>
         <button menuClose="left" ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">

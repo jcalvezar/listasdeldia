@@ -24,6 +24,8 @@ export class MisnotificacionesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisnotificacionesPage');
+		
+		this.jcaService.leerNotificaciones();
   }
 
 	mostrarNotificacion(notificacion) {

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoadingController } from 'ionic-angular';
 
 import { So_usuario, So_expedientes, So_notificaciones } from '../../models/modelos';
 
@@ -12,14 +13,15 @@ import { So_usuario, So_expedientes, So_notificaciones } from '../../models/mode
 @Injectable()
 export class JcaserviceProvider {
 
-	apiUrl = 'https://www.jcalvez.info/apps/listasdeldia/v001';
+	//apiUrl = 'https://www.jcalvez.info/apps/listasdeldia/v001';
+	apiUrl = 'http://192.168.29.128/~listas/jcapi/v001';
   public loginState:boolean = false;
 	
 	usuario: So_usuario;
 	expedientes: So_expedientes;
 	notificaciones: So_notificaciones;
 	
-  constructor(public http: HttpClient) {
+  constructor(public loadingCtrl: LoadingController, public http: HttpClient) {
     console.log('Hello JcaserviceProvider Provider');
 		
 		this.usuario = {
@@ -64,8 +66,8 @@ export class JcaserviceProvider {
 				 this.usuario = result['user'];
 				 this.loginState = true;
 				 
-				 this.leerExpedientes();
-				 this.leerNotificaciones();
+				 //this.leerExpedientes();
+				 //this.leerNotificaciones();
 				 
 				 resolve(true);
 			}, (err) => {
@@ -107,20 +109,35 @@ export class JcaserviceProvider {
 	// Lee un JSON de una URL via GET
 	// -------------------------------------------------------
 	enviarGet(servicio) {
-	  return new Promise(resolve => {
+	  return new Promise( (resolve, reject) => {
 			
-			// Preparo HEADERS
-			let jheaders = new HttpHeaders();
-		
-			if (this.loginState) {
-				jheaders = jheaders.set('Authentication', this.usuario.token);
-				console.log('Agregué TOKEN al HEADER HTTP');
-			}
-		
-			this.http.get(this.apiUrl+servicio, {headers: jheaders}).subscribe(data => {
-				resolve(data);
-			}, err => {
-				console.log(err);
+			let loader = this.loadingCtrl.create({
+				content: "Espere..."
+			});
+			
+			loader.present().then(() => {
+				// Preparo HEADERS
+				let jheaders = new HttpHeaders();
+			
+				if (this.loginState) {
+					jheaders = jheaders.set('Authentication', this.usuario.token);
+					console.log('Agregué TOKEN al HEADER HTTP');
+				}
+			
+				this.http.get(this.apiUrl+servicio, {headers: jheaders}).subscribe(data => {
+					
+					loader.dismiss().then(() => {
+						resolve(data);
+					});
+					
+				}, err => {
+					console.log(err);
+					
+					loader.dismiss().then(() => {
+						reject(err);
+					});
+					
+				});
 			});
 	  });
 	}
@@ -129,24 +146,37 @@ export class JcaserviceProvider {
 	// Lee un JSON de una URL via POST enviando DATA
 	// -------------------------------------------------------
 	enviarPost(servicio,data) {
-	  return new Promise((resolve, reject) => {
+	  return new Promise( (resolve, reject) => {
 		  
-		// Preparo HEADERS
-    let jheaders = new HttpHeaders();
-		
-		if (this.loginState) {
-			jheaders = jheaders.set('Authentication', this.usuario.token);
-			console.log('Agregué TOKEN al HEADER HTTP');
-		}
-		
-		// ENVIO EL POST
-		this.http.post(this.apiUrl+servicio, data, {headers: jheaders})
-		  .subscribe(res => {
-			resolve(res);
-		  }, (err) => {
-			reject(err);
-		  });
-	  });
+			let loader = this.loadingCtrl.create({
+				content: "Espere..."
+			});
+			
+			loader.present().then(() => {
+				// Preparo HEADERS
+				let jheaders = new HttpHeaders();
+				
+				if (this.loginState) {
+					jheaders = jheaders.set('Authentication', this.usuario.token);
+					console.log('Agregué TOKEN al HEADER HTTP');
+				}
+				
+				// ENVIO EL POST
+				this.http.post(this.apiUrl+servicio, data, {headers: jheaders})
+					.subscribe(res => {
+						
+						loader.dismiss().then(() => {
+							resolve(res);
+						});
+					
+					}, (err) => {
+						loader.dismiss().then(() => {
+							reject(err);
+						});
+					});
+
+			});
+		});
 	}
 
 }
