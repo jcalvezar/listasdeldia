@@ -28,7 +28,11 @@ export class JcaserviceProvider {
 			nombre: '',
 			apellido: '',
 			email: '',
+			password: '',
+			ciudad: 0,
+			direccion: '',
 			id: '',
+			codigo: '',
 			token: ''
 		};
 		
