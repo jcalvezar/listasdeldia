@@ -1,6 +1,7 @@
 
 export interface So_usuario {
 	nombre: string,
+	apellido: string,
 	email: string,
 	password: string,
 	ciudad: number,
