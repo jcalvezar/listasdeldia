@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
+
 /**
  * Generated class for the MisdatosPage page.
  *
@@ -14,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MisdatosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public jcaService: JcaserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
