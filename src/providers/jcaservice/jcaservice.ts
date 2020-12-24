@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { So_usuario, So_expedientes, So_notificaciones } from '../../models/modelos';
 
@@ -14,6 +15,7 @@ import { So_usuario, So_expedientes, So_notificaciones } from '../../models/mode
 export class JcaserviceProvider {
 
 	//apiUrl = 'https://www.jcalvez.info/apps/listasdeldia/v001';
+	almacen: string = 'ListasDelDia';
 	apiUrl = 'http://192.168.29.128/~listas/jcapi/v001';
   public loginState:boolean = false;
 	
@@ -21,7 +23,7 @@ export class JcaserviceProvider {
 	expedientes: So_expedientes;
 	notificaciones: So_notificaciones;
 	
-  constructor(public loadingCtrl: LoadingController, public http: HttpClient) {
+  constructor(private storage: Storage, public loadingCtrl: LoadingController, public http: HttpClient) {
     console.log('Hello JcaserviceProvider Provider');
 		
 		this.usuario = {
@@ -70,8 +72,7 @@ export class JcaserviceProvider {
 				 this.usuario = result['user'];
 				 this.loginState = true;
 				 
-				 //this.leerExpedientes();
-				 //this.leerNotificaciones();
+				 this.storage.set(this.almacen, result['user']);
 				 
 				 resolve(true);
 			}, (err) => {

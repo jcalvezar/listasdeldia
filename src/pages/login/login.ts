@@ -25,26 +25,29 @@ import { RecuperoPage } from '../recupero/recupero';
 })
 export class LoginPage {
 
-	almacen: string = 'softcorp-peritajes';
 	cities: any = [ { id: 1, nombre: 'Corrientes' }, { id: 2, nombre: 'Paso de la Patria' } ];
 	loginStatus: number = 0;
 	user: So_usuario = JSON.parse('{"nombre":"","apellido":"","email":"","password":"","id":"","token":""}');
 	
   constructor(public jcaService: JcaserviceProvider, public loadingCtrl: LoadingController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
-		//this.checkLogged();
+		this.checkLogged();
   }
 
 	checkLogged() {
 		
-		this.storage.get(this.almacen).then((val) => {
+		this.storage.get(this.jcaService.almacen).then((val) => {
 			console.log('Leyendo Storage');
 			if (val != null) {
-				console.log('Tengo Datos:', val.celular);
+				console.log('Tengo Datos:', val.email);
+				console.log('Tengo Datos:', val.token);
 				this.user = val;
+				this.jcaService.usuario = val;
 				
 				if (this.user.token!='') {
 					console.log('Tengo Token. Entro.');
 					//this.loginStatus = 1;
+					this.jcaService.loginState = true;
+					this.navCtrl.setRoot( TabsPage );
 				} else {
 					console.log('NO Tengo Token. Pido.');
 					//this.loginStatus = 2;

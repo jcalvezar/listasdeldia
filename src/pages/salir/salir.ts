@@ -17,8 +17,6 @@ import { LoginPage } from '../../pages/login/login';
   templateUrl: 'salir.html',
 })
 export class SalirPage {
-
-	almacen: string = 'listasdeldia-app';
 	
   constructor(private storage: Storage, public jcaService: JcaserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
 
@@ -27,7 +25,7 @@ export class SalirPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SalirPage');
 		
-		this.storage.remove(this.almacen).then(() => {
+		this.storage.remove(this.jcaService.almacen).then(() => {
 			console.log('Logging Out');
 			this.jcaService.loginState = false;
 			//this.app.getRootNav().setRoot(LoginPage);
