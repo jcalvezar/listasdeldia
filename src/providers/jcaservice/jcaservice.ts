@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { So_usuario, So_expedientes, So_notificaciones } from '../../models/modelos';
+import { So_usuario, So_expedientes, So_notificaciones, So_proveidos } from '../../models/modelos';
 
 /*
   Generated class for the JcaserviceProvider provider.
@@ -22,6 +22,7 @@ export class JcaserviceProvider {
 	usuario: So_usuario;
 	expedientes: So_expedientes;
 	notificaciones: So_notificaciones;
+	proveidos: So_proveidos;
 	
   constructor(private storage: Storage, public loadingCtrl: LoadingController, public http: HttpClient) {
     console.log('Hello JcaserviceProvider Provider');
@@ -107,6 +108,27 @@ export class JcaserviceProvider {
 			this.notificaciones = data['notificaciones'];
 		}, (err) => {
 			console.log(err);
+		});
+	}
+	
+	// -------------------------------------------------------
+	// Leer Proveidos
+	// -------------------------------------------------------
+	leerProveidos(notificacion) {
+		console.log('Leyendo Proveidos');
+		
+		let postData = new FormData();
+		postData.append('expediente' , notificacion.nro);
+		postData.append('juzgado' , notificacion.juzgado);
+		postData.append('provincia' , notificacion.provincia);
+		
+		this.enviarPost('/proveidos/',postData).then((result) => {
+			 console.log('JCA: ' + JSON.stringify(result));
+			 
+			 this.proveidos = result['proveidos'];
+		}, (err) => {
+			
+			 console.log(err);
 		});
 	}
 	

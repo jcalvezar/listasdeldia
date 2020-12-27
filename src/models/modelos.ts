@@ -26,9 +26,21 @@ export interface So_notificacion {
 	id: string,
 	nro: string,
 	caratula: string,
-	proveido: string
+	proveido: string,
+	juzgado: string,
+	provincia: string
 };
 
 export interface So_notificaciones {
 	[index: string]: So_notificacion[];
+};
+
+export interface So_proveido {
+	fecha: string,
+	titulo: string,
+	texto: string,
+};
+
+export interface So_proveidos {
+	[index: string]: So_proveido[];
 };
