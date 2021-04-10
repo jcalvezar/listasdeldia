@@ -13,6 +13,7 @@ import { AgregarexpedientePage } from '../pages/agregarexpediente/agregarexpedie
 import { MisnotificacionesPage } from '../pages/misnotificaciones/misnotificaciones';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { TabsPage } from '../pages/tabs/tabs';
+import { CaluMiListaDelDiaPage } from '../pages/calu-mi-lista-del-dia/calu-mi-lista-del-dia';
 
 import { LoginPage } from '../pages/login/login';
 import { AdherirPage } from '../pages/adherir/adherir';
@@ -30,6 +31,7 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
     MyApp,
     ContactPage,
     TabsPage,
+    CaluMiListaDelDiaPage,
 		MisdatosPage,
 		MilicenciaPage,
 		LoginPage,
@@ -53,6 +55,7 @@ import { JcaserviceProvider } from '../providers/jcaservice/jcaservice';
     MyApp,
     ContactPage,
     TabsPage,
+    CaluMiListaDelDiaPage,
 		MisdatosPage,
 		MilicenciaPage,
 		LoginPage,

@@ -1,0 +1,57 @@
+<!--
+  Generated template for the CaluMiListaDelDiaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mi Lista Del Dia</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+
+    <ion-fab right bottom>
+    <button ion-fab (click)="agregarExpediente()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+    
+    <div padding>
+	<ion-segment [(ngModel)]="tipo">
+	    <ion-segment-button value="chaco">
+		Chaco
+	    </ion-segment-button>
+	    <ion-segment-button value="formosa">
+		Formosa
+	    </ion-segment-button>
+	</ion-segment>
+    </div>
+
+    <ion-list>
+	<ng-container *ngFor="let expediente of jcaService.expedientes[tipo]">
+
+	    <ion-item-sliding >
+		<ion-item >
+		    <h2>{{ expediente.nro }}</h2>
+		    <p>{{ expediente.caratula }}</p>
+		    <p>{{ expediente.juzgado }}</p>
+		    <button ion-button clear item-end (click)="mostrarExpediente(expediente)">Ver</button>
+		</ion-item>
+		<ion-item-options side="left">
+		    <button ion-button color="primary" (click)="eliminarExpediente(expediente)" >
+			<ion-icon name="close"></ion-icon>
+			Eliminar
+		    </button>
+		</ion-item-options>
+	    </ion-item-sliding>
+	    
+	</ng-container>
+    </ion-list>
+    
+</ion-content> 
