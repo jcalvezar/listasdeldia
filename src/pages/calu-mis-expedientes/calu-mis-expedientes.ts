@@ -25,7 +25,7 @@ tipo: string = 'chaco';
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisnotificacionesPage');
 	
-	  this.jcaService.leerExpedientes();
+	  //this.jcaService.leerExpedientes();
   };
 
 

@@ -87,13 +87,10 @@ export class JcaserviceProvider {
 	// -------------------------------------------------------
 	// Leer Expedientes
 	// -------------------------------------------------------
-	leerExpedientes(dia: string) {
-		console.log('leyendo expedientes del dia ',dia);
+	leerExpedientes() {
+		console.log('leyendo expedientes');
 		
-		let postData = new FormData();
-		postData.append('dia', dia);
-
-		this.enviarPost('/expedientes/', postData).then(data => {
+		this.enviarGet('/expedientes/').then(data => {
 			console.log('Lei expedientes...');
 			this.expedientes = data['expedientes'];
 		}, (err) => {
@@ -104,10 +101,13 @@ export class JcaserviceProvider {
 	// -------------------------------------------------------
 	// Leer Notificaciones
 	// -------------------------------------------------------
-	leerNotificaciones() {
-		console.log('leyendo notificaciones');
+	leerNotificaciones(dia: string) {
+		console.log('leyendo notificaciones del dia:', dia);
 		
-		this.enviarGet('/notificaciones/').then(data => {
+		let postData = new FormData();
+		postData.append('dia', dia);
+
+		this.enviarPost('/notificaciones/', postData).then(data => {
 			console.log('Lei notifis...');
 			this.notificaciones = data['notificaciones'];
 		}, (err) => {
