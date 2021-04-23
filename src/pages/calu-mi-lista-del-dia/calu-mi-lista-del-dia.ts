@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
-import { ExpedientePage } from '../expediente/expediente';
-import { AgregarexpedientePage } from '../agregarexpediente/agregarexpediente';
+import { NotificacionPage } from '../notificacion/notificacion';
 
 /**
  * Generated class for the CaluMiListaDelDiaPage page.
@@ -18,32 +17,26 @@ import { AgregarexpedientePage } from '../agregarexpediente/agregarexpediente';
 })
 export class CaluMiListaDelDiaPage {
 
-    tipo: string = 'chaco';
+  tipo: string = 'chaco';
     
   constructor(public jcaService: JcaserviceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisexpedientesPage');
-	
-	this.jcaService.leerExpedientes();
+	  //this.jcaService.leerNotificaciones('');
   }
     
-    mostrarExpediente(expediente) {
-      console.log("expte "+expediente.nro);
+  mostrarNotificacion(notificacion) {
+    console.log("notif "+notificacion.nro);
 
-      this.navCtrl.push(ExpedientePage, {
-        expte: expediente
-      });
-    }
-    
-    agregarExpediente() {
-      console.log("expte nuevo");
+    this.navCtrl.push(NotificacionPage, {
+      noti: notificacion
+    });
+  }
 
-      this.navCtrl.push(AgregarexpedientePage);
-    }
-
-    eliminarExpediente(expediente) {
-	console.log("Eliminando...");
-    }
+  changeDate(_event) {
+    console.log('Dia Actual cambio a: ' + this.jcaService.diaActual);
+    //this.jcaService.leerNotificaciones(this.jcaService.diaActual);
+  }
 }

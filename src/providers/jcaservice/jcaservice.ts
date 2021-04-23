@@ -23,6 +23,7 @@ export class JcaserviceProvider {
 	expedientes: So_expedientes;
 	notificaciones: So_notificaciones;
 	proveidos: So_proveidos;
+	diaActual= '2021-04-23';
 	
   constructor(private storage: Storage, public loadingCtrl: LoadingController, public http: HttpClient) {
     console.log('Hello JcaserviceProvider Provider');
@@ -86,10 +87,13 @@ export class JcaserviceProvider {
 	// -------------------------------------------------------
 	// Leer Expedientes
 	// -------------------------------------------------------
-	leerExpedientes() {
-		console.log('leyendo expedientes');
+	leerExpedientes(dia: string) {
+		console.log('leyendo expedientes del dia ',dia);
 		
-		this.enviarGet('/expedientes/').then(data => {
+		let postData = new FormData();
+		postData.append('dia', dia);
+
+		this.enviarPost('/expedientes/', postData).then(data => {
 			console.log('Lei expedientes...');
 			this.expedientes = data['expedientes'];
 		}, (err) => {

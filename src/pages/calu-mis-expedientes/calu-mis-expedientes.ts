@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { JcaserviceProvider } from '../../providers/jcaservice/jcaservice';
-import { NotificacionPage } from '../notificacion/notificacion';
+import { AgregarexpedientePage } from '../agregarexpediente/agregarexpediente';
 
 /**
  * Generated class for the CaluMisExpedientesPage page.
@@ -25,14 +25,14 @@ tipo: string = 'chaco';
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisnotificacionesPage');
 	
-	this.jcaService.leerNotificaciones();
-  }
+	  this.jcaService.leerExpedientes();
+  };
 
-    mostrarNotificacion(notificacion) {
-      console.log("notif "+notificacion.nro);
 
-      this.navCtrl.push(NotificacionPage, {
-        noti: notificacion
-      });
+
+    agregarExpediente() {
+      console.log("expte nuevo");
+
+      this.navCtrl.push(AgregarexpedientePage);
     }
 }

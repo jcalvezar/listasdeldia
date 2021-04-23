@@ -14,7 +14,10 @@
 </ion-header>
 
 <ion-content padding>
-
+	<ion-fab right bottom>
+		<button ion-fab (click)="agregarExpediente()"><ion-icon name="add"></ion-icon></button>
+	  </ion-fab>
+	  
     <div padding>
 	<ion-segment [(ngModel)]="tipo">
 	    <ion-segment-button value="chaco">
@@ -27,12 +30,24 @@
     </div>
     
     <ion-list>
-	<ion-item *ngFor="let notificacion of jcaService.notificaciones[tipo]">
-	    <h2>{{ notificacion.nro }}</h2>
-	    <p>{{ notificacion.caratula }}</p>
-	    <p>{{ notificacion.proveido }}</p>
-	    <button ion-button clear item-end (click)="mostrarNotificacion(notificacion)">Ver</button>
-	</ion-item>
+		<ng-container *ngFor="let expediente of jcaService.expedientes[tipo]">
+
+			<ion-item-sliding >
+			<ion-item >
+				<h2>{{ expediente.nro }}</h2>
+				<p>{{ expediente.caratula }}</p>
+				<p>{{ expediente.juzgado }}</p>
+				<button ion-button clear item-end (click)="mostrarExpediente(expediente)">Ver</button>
+			</ion-item>
+			<ion-item-options side="left">
+				<button ion-button color="primary" (click)="eliminarExpediente(expediente)" >
+				<ion-icon name="close"></ion-icon>
+				Eliminar
+				</button>
+			</ion-item-options>
+			</ion-item-sliding>
+			
+		</ng-container>
     </ion-list>
 
 </ion-content>
