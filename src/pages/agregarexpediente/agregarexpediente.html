@@ -18,7 +18,10 @@
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      {{ item }}
+      <h2>{{ item }}</h2>
+      <h3>Caratula</h3>
+      <p>...alguna otra cosa</p>
+      <button ion-button clear item-end>Seguir</button>
     </ion-item>
   </ion-list>
 </ion-content>
